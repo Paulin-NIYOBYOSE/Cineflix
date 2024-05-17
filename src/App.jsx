@@ -1,13 +1,32 @@
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import HomeScreen from "./Screens/HomeScreen";
+import AboutUs from "./Screens/AboutUs";
+import NotFound from "./Screens/NotFound";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeScreen />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 
+  {
+    path: "/about",
+    element: <AboutUs />,
+  },
+
+]);
 function App() {
 
   return (
+
     <>
-      <div className=' h-header bg-main w-full'>
-        <h1 className="text-h1 text-star font-bold underline ">
-          Hello world!
-        </h1>
-      </div>
+      <RouterProvider router={router} />
     </>
   )
 }

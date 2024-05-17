@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,css}",
   ],
   theme: {
     extend: {
@@ -18,7 +18,7 @@ export default {
       },
       colors: {
         main: '#080A1A',
-        subMain: "F20000",
+        subMain: "#F20000",
         dry: "#0B0F29",
         star: "#FFB000",
         text: '#C0C0C0',
@@ -27,6 +27,6 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [],
 }
 
