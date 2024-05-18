@@ -4,7 +4,7 @@ import { FaHeart, FaSearch, FaUser } from "react-icons/fa";
 
 const Navbar = () => {
     const hover = "hover:text-subMain transitions text-white"
-    const Hover = ({ isActive }) => (isActive ? 'text-subMain' : 'hover"text-gray-500')
+    const Hover = ({ isActive }) => (isActive ? 'text-subMain' : 'hover"text-subMain')
     return (
         <>
             <div className='bg-main shadow-md sticky top-0 z-20'>
@@ -27,20 +27,20 @@ const Navbar = () => {
 
                     </div>
                     {/* menu */}
-                    <div className='col-span-3 font-medium text-sm hidden  gap-10 lg:flex items-center justify-end mr-20 '>
-                        <NavLink to="/movies" className={Hover} >
+                    <div className='col-span-3 font-medium text-sm hidden  gap-7 lg:flex items-center justify-end mr-20 '>
+                        <NavLink to="/movies" className={hover} >
                             Movies
                         </NavLink>
-                        <NavLink to="/about-us" className={Hover} >
+                        <NavLink to="/about-us" className={hover} >
                             About us
                         </NavLink>
-                        <NavLink to="/contact-us" className={Hover} >
+                        <NavLink to="/contact-us" className={hover} >
                             Contact us
                         </NavLink>
-                        <NavLink to="/login" className={Hover} >
+                        <NavLink to="/login" className={hover} >
                             <FaUser className="w-8 h-8" />
                         </NavLink>
-                        <NavLink to="/favorite" className={`${Hover} relative inline-block`}>
+                        <NavLink to="/favorite" className={`${hover} relative inline-block`}>
                             <FaHeart className="w-8 h-8" />
                             <div className='w-5 h-5 flex items-center justify-center rounded-full text-xs bg-subMain text-white absolute -top-2 -right-2'>
                                 2
