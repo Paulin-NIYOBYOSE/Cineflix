@@ -2,7 +2,7 @@ export const Movies = [
     {
         name: "The fast saga",
         desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti provident repudiandae veniam ratione quam.',
-        titleImage: "1a.jpg",
+        titleImage: "FastSaga.jpeg",
         image: "FastSaga.jpeg",
         category: "Western",
         language: "English",
