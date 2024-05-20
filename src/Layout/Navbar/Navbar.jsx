@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaHeart, FaSearch, FaUser } from "react-icons/fa";
-
 const Navbar = () => {
-    const hover = "hover:text-subMain transitions text-white"
-    const Hover = ({ isActive }) => (isActive ? 'text-subMain' : 'hover"text-subMain')
+    const hover = "hover:text-subMain transitions text-white";
+    const Hover = ({ isActive }) => (isActive ? 'text-red-500' : hover);
     return (
         <>
             <div className='bg-main shadow-md sticky top-0 z-20'>
@@ -22,36 +21,33 @@ const Navbar = () => {
                             <button type='submit' className='bg-subMain w-12 flex-colo h-12 rounded text-white'>
                                 <FaSearch />
                             </button>
-                            <input type="text" placeholder=' Search Movie name here' className='font-medium placeholder:text-border text-sm w-11/12 h-12 bg-transparent border-none px-2 text-black' />
+                            <input type="text" placeholder='Search Movie name here' className='font-medium placeholder:text-border text-sm w-11/12 h-12 bg-transparent border-none px-2 text-black' />
                         </form>
-
                     </div>
                     {/* menu */}
-                    <div className='col-span-3 font-medium text-sm hidden  gap-7 lg:flex items-center justify-end mr-20 '>
-                        <NavLink to="/movies" className={hover} >
+                    <div className='col-span-3 font-medium text-sm hidden gap-7 lg:flex items-center justify-end mr-20'>
+                        <NavLink to="/movies" className={Hover} >
                             Movies
                         </NavLink>
-                        <NavLink to="/about-us" className={hover} >
+                        <NavLink to="/about-us" className={Hover} >
                             About us
                         </NavLink>
-                        <NavLink to="/contact-us" className={hover} >
+                        <NavLink to="/contact" className={Hover} >
                             Contact us
                         </NavLink>
-                        <NavLink to="/login" className={hover} >
+                        <NavLink to="/login" className={Hover} >
                             <FaUser className="w-8 h-8" />
                         </NavLink>
-                        <NavLink to="/favorite" className={`${hover} relative inline-block`}>
+                        <NavLink to="/favorite" className={`${Hover} relative inline-block`}>
                             <FaHeart className="w-8 h-8" />
                             <div className='w-5 h-5 flex items-center justify-center rounded-full text-xs bg-subMain text-white absolute -top-2 -right-2'>
                                 2
                             </div>
                         </NavLink>
-
                     </div>
                 </div>
             </div>
         </>
     );
 }
-
-export default Navbar
+export default Navbar;
