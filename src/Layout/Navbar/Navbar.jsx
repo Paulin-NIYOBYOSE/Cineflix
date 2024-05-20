@@ -10,7 +10,7 @@ const Navbar = () => {
             <div className='bg-main shadow-md sticky top-0 z-20'>
                 <div className='container mx-auto py-6 px-2 lg:grid gap-20 grid-cols-7 justify-between'>
                     <div className='col-span-1 lg:block hidden'>
-                        <Link to="" >
+                        <Link to="/" >
                             <img
                                 src="/images/Logo.png"
                                 alt="logo"

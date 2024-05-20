@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Titles from '../Titles';
 import Slider from 'react-slick';
 import { Movies } from '../../Data/MovieData';
-import { BsBookmarkStarFill } from 'react-icons/bs';
-import { FaHeart } from 'react-icons/fa';
+import { BsBookmarkStarFill, BsCaretLeft, BsCaretRight } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { FaHeart } from 'react-icons/fa';
+import Rate from './Rate';
 
 const CustomPrevArrow = (props) => {
     const { onClick } = props;
     return (
-        <div className="slick-arrow slick-prev" onClick={onClick}>
-            {/* Your custom previous arrow icon or element */}
-        </div>
+        <button className="slick-arrow slick-prev" onClick={onClick}>
+            <BsCaretLeft />
+        </button>
     );
 };
 
 const CustomNextArrow = (props) => {
     const { onClick } = props;
     return (
-        <div className="slick-arrow slick-next" onClick={onClick}>
-            {/* Your custom next arrow icon or element */}
-        </div>
+        <button className="slick-arrow slick-next" onClick={onClick}>
+            <BsCaretRight />
+        </button>
     );
 };
 
+const classNames = "hover:bg-dry transitions text-sm rounded w-8 h-8 flex-colo bg-subMain text-white";
+
 const TopRated = () => {
+    const sliderRef = useRef(null);
+
     const settings = {
         dots: false,
         infinite: true,
@@ -58,30 +63,51 @@ const TopRated = () => {
         ],
     };
 
+    const goToPrevSlide = () => {
+        sliderRef.current.slickPrev();
+    };
+
+    const goToNextSlide = () => {
+        sliderRef.current.slickNext();
+    };
+
     return (
         <div className="my-16 px-[60px]">
             <Titles title="Top Rated" IconBase={BsBookmarkStarFill} />
             <div className="mt-10">
-                <Slider {...settings} className="grid gap-4">
+                <Slider {...settings} ref={sliderRef} className="grid gap-4">
                     {Movies.map((movie, index) => (
                         <div key={index} className="w-full mr-4"> {/* Add mr-4 for gap between slides */}
-                            <div className="mr-4 p-4 h-rate border border-border bg-dry rounded-lg">
+                            <div className="mr-4 p-4 h-rate hovered border border-border bg-dry rounded-lg relative">
                                 <img
                                     src={`/images/${movie.titleImage}`}
                                     alt={movie.name}
                                     className="w-full h-full object-cover rounded-lg"
                                 />
-                                <div className='px-4 gap-6 text-center absolute bg-black bg-opacity-70 top-0 left-0 right-0 bottom-0'>
-                                    <button className='w-12 h-12 flex-colo transitions hover:bg-subMain rounded-full '>
+                                <div className='absolute hoveres  inset-0 flex flex-col justify-center items-center gap-6 text-center bg-black bg-opacity-50'>
+                                    <button className='w-12 h-12 flex items-center justify-center transition hover:bg-subMain hover:rounded'>
                                         <FaHeart />
                                     </button>
-                                    <Link className="font-semibold text-xl" to={`/movie/${movie.name}`}>
+                                    <Link className='font-semibold text-xl truncate line-clamp-2 text-white' to={`/movies/${movie.name}`}>
+                                        {movie.name}
                                     </Link>
+                                    <div className='flex gap-2 text-star'>
+                                        {/* Assuming Rate component displays star ratings */}
+                                        <Rate value={movie.rate} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </Slider>
+                <div className='w-full px-1 flex-rows gap-6 pt-12'>
+                    <button className={classNames} onClick={goToPrevSlide}>
+                        <BsCaretLeft />
+                    </button>
+                    <button className={classNames} onClick={goToNextSlide}>
+                        <BsCaretRight />
+                    </button>
+                </div>
             </div>
         </div>
     );
