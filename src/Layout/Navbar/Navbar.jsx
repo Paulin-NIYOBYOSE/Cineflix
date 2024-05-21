@@ -26,7 +26,7 @@ const Navbar = () => {
                     </div>
                     {/* menu */}
                     <div className='col-span-3 font-medium text-sm hidden gap-7 lg:flex items-center justify-end mr-20'>
-                        <NavLink to="/movies" className={Hover} >
+                        <NavLink to="/movies-section" className={Hover} >
                             Movies
                         </NavLink>
                         <NavLink to="/about-us" className={Hover} >

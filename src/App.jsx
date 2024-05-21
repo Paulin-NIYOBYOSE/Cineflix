@@ -7,6 +7,7 @@ import AboutUs from "./Screens/AboutUs";
 import NotFound from "./Screens/NotFound";
 import ContactUs from "./Screens/ContactUs";
 import Login from "./Screens/Login";
+import MovieSection from "./Screens/MovieSection";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/movies-section",
+    element: <MovieSection />,
   },
 
 ]);
