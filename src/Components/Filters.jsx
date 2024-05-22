@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 
 const yearData = [
     { title: "Sort by year" },
@@ -69,12 +69,26 @@ const Filters = () => {
                         <ListBox.Button className="relative w-full pr-10 py-4 pl-6 text-left text-sm cursor-default">
                             <span className="block truncate">{item.value.title}</span>
                             <span className='absolute inset-y-0 right-0 flex items-center pointer-events-none pr-2'>
+                                <SelectorIcon className='h-5 w-5' aria-hidden="true">
+
+                                </SelectorIcon>
                             </span>
                         </ListBox.Button>
+                        <Transition as={Fragment} leave="transition ease-in duration-100" >
+                            <ListBox.Options className="absolute z-10 mt-1 max-1 w-full bg-dry border border-800 text-dryGray rounded-md shadow-lg max-h-60">
+                                {Filter.items.map((item, index) => (
+                                    <ListBox.option key={i} className={({ active }) => `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? "bg-subMain text-white" : "text-main"
+                                        }`} value={item}>
+
+                                    </ListBox.option>
+                                ))}
+                            </ListBox.Options>
+                        </Transition>
                     </div>
                 </ListBox>
-            ))}
-        </div>
+            ))
+            }
+        </div >
     )
 }
 
